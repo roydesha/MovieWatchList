@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView editable="true" layoutX="36.0" layoutY="41.0" prefHeight="318.0" prefWidth="529.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text=" Movie Title " />
+          <TableColumn prefWidth="75.0" text="Genre " />
+            <TableColumn prefWidth="75.0" text="Run Time " />
+            <TableColumn prefWidth="123.0" text="Where to Watch" />
+            <TableColumn prefWidth="82.0" text="Movie Poster" />
+            <TableColumn prefWidth="96.0" text="Finish Watching" />
+        </columns>
+      </TableView>
+      <Button layoutX="450.0" layoutY="367.0" mnemonicParsing="false" text="see watched movies" textFill="#0f5b1c" />
+   </children>
+</Pane>
