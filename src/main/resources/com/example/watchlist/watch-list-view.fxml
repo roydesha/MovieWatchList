@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.watchlist.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.watchlist.HelloController">
+   <children>
+      <TableView fx:id="mediaTable" editable="true" layoutX="125.0" layoutY="56.0" prefHeight="263.0" prefWidth="464.0">
+        <columns>
+          <TableColumn fx:id="tableTitle" prefWidth="128.0" text=" Movie Title " />
+          <TableColumn fx:id="tableGenre" prefWidth="105.0" text="Genre " />
+            <TableColumn fx:id="tableRunTime" prefWidth="91.0" text="Run Time " />
+            <TableColumn fx:id="tableStreaming" prefWidth="139.0" text="Where to Watch" />
+        </columns>
+      </TableView>
+      <Button fx:id="completedButton" layoutX="460.0" layoutY="361.0" mnemonicParsing="false" text="see watched movies" textFill="#0f5b1c" />
+      <Button fx:id="finishedButton" layoutX="13.0" layoutY="328.0" mnemonicParsing="false" text="Finished Watching" />
+      <Button fx:id="rateButton" layoutX="51.0" layoutY="361.0" mnemonicParsing="false" text="Rate" visible="false" />
+      <ChoiceBox layoutX="-1.0" layoutY="2.0" prefHeight="25.0" prefWidth="147.0" />
+      <RadioButton fx:id="radioOne" layoutX="157.0" layoutY="352.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="43.0" text="1" visible="false" />
+      <RadioButton fx:id="radioTwo" layoutX="213.0" layoutY="352.0" mnemonicParsing="false" text="2" visible="false" />
+      <RadioButton fx:id="radioThree" layoutX="275.0" layoutY="352.0" mnemonicParsing="false" text="3" visible="false" />
+      <RadioButton fx:id="radioFour" layoutX="340.0" layoutY="352.0" mnemonicParsing="false" text="4" visible="false" />
+      <RadioButton fx:id="radioFive" layoutX="403.0" layoutY="352.0" mnemonicParsing="false" text="5" visible="false" />
+      <Label layoutX="154.0" layoutY="374.0" prefHeight="25.0" prefWidth="49.0" text="Bad :(" visible="false" />
+      <Label layoutX="397.0" layoutY="378.0" prefHeight="17.0" prefWidth="43.0" text="Super :)" visible="false" />
+      <Button fx:id="addButton" layoutX="34.0" layoutY="289.0" mnemonicParsing="false" onAction="#insertMovie" text="Add Movie" />
+   </children>
+</Pane>
