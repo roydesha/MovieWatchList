@@ -10,11 +10,13 @@ String genre;
 String streamingService;
 LocalTime runTime; //might turn back into int
 boolean watched;
+int ratingNumber;
 
-    static ArrayList<Media> allMedia = new ArrayList<Media>();
+    static ArrayList<Media> toWatchMedia = new ArrayList<Media>();
+    static ArrayList<Media> watchedMedia = new ArrayList<Media>();
 
     public Media() {
-        allMedia.add(this);
+        toWatchMedia.add(this);
     }
 
     public String getTitle() {
@@ -38,6 +40,8 @@ boolean watched;
     }
 
     public void setWatched(boolean watched) {
+        toWatchMedia.remove(this);
+        watchedMedia.add(this);
         this.watched = watched;
     }
 
@@ -58,10 +62,18 @@ boolean watched;
     }
 
     public static ArrayList<Media> getAllMedia() {
-        return allMedia;
+        return toWatchMedia;
     }
 
     public static void setAllMedia(ArrayList<Media> allMedia) {
-        Media.allMedia = allMedia;
+        Media.toWatchMedia = allMedia;
+    }
+
+    public int getRatingNumber() {
+        return ratingNumber;
+    }
+
+    public void setRatingNumber(int ratingNumber) {
+        this.ratingNumber = ratingNumber;
     }
 }

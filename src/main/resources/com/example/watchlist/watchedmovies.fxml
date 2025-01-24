@@ -6,16 +6,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.watchlist.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.watchlist.WatchedControllers">
    <children>
       <Button fx:id="returnButton" layoutX="496.0" layoutY="367.0" mnemonicParsing="false" text="return" textFill="#0f5b1c" />
-      <TableView editable="true" layoutX="72.0" layoutY="69.0" prefHeight="262.0" prefWidth="474.0">
+      <TableView fx:id="watchedMediaTable" editable="true" layoutX="72.0" layoutY="69.0" prefHeight="262.0" prefWidth="474.0">
          <columns>
-            <TableColumn fx:id="tableTitle1" prefWidth="95.0" text=" Movie Title " />
-            <TableColumn fx:id="tableGenre1" prefWidth="89.0" text="Genre " />
-            <TableColumn fx:id="tableRunTime1" prefWidth="90.0" text="Run Time " />
-            <TableColumn fx:id="tableStreaming" prefWidth="123.0" text="Where to Watch" />
-            <TableColumn prefWidth="75.0" text="Rating" />
+            <TableColumn fx:id="tableTitleWatched" prefWidth="95.0" text=" Movie Title " />
+            <TableColumn fx:id="tableGenreWatched" prefWidth="89.0" text="Genre " />
+            <TableColumn fx:id="tableRunTimeWatched" prefWidth="90.0" text="Run Time " />
+            <TableColumn fx:id="tableStreamingWatched" prefWidth="123.0" text="Where to Watch" />
+            <TableColumn fx:id="tableRating" prefWidth="75.0" text="Rating" />
          </columns>
       </TableView>
       <Label layoutX="175.0" layoutY="36.0" prefHeight="10.0" prefWidth="253.0" text="                           -- Finished Movies --" textFill="#1956ab" />
