@@ -8,7 +8,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: lightgreen;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.watchlist.WatchedControllers">
    <children>
-      <Button fx:id="returnButton" layoutX="496.0" layoutY="367.0" mnemonicParsing="false" text="return" textFill="#0f5b1c" />
+      <Button fx:id="returnButton" layoutX="496.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchToHomePage" text="return" textFill="#0f5b1c" />
       <TableView fx:id="watchedMediaTable" editable="true" layoutX="72.0" layoutY="69.0" prefHeight="262.0" prefWidth="474.0">
          <columns>
             <TableColumn fx:id="tableTitleWatched" prefWidth="95.0" text=" Movie Title " />

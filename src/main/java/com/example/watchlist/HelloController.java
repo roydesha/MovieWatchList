@@ -28,7 +28,7 @@ public RadioButton radioFive;
 public Button returnButton;
 public TableColumn<Media,String> tableTitle;
 public TableColumn<Media,String> tableGenre;
-public TableColumn<Media, LocalTime> tableRunTime;
+public TableColumn<Media, String> tableRunTime;
 public TableColumn<Media, String> tableStreaming;
 public TableColumn tablePoster;
 public TableColumn tableWatched;
@@ -51,7 +51,7 @@ public void initialize() throws Exception {
     tableTitle.setCellFactory(TextFieldTableCell.forTableColumn());
     tableGenre.setCellFactory(TextFieldTableCell.forTableColumn());
     tableStreaming.setCellFactory(TextFieldTableCell.forTableColumn());
-    tableRunTime.setCellFactory(TextFieldTableCell.forTableColumn(new LocalTimeStringConverter()));
+    tableRunTime.setCellFactory(TextFieldTableCell.forTableColumn());
 
     // tell each TableColumn which Media field to store data to
     tableTitle.setOnEditCommit(
@@ -69,10 +69,10 @@ public void initialize() throws Exception {
             });
 
     tableRunTime.setOnEditCommit(
-            (TableColumn.CellEditEvent<Media, LocalTime> m) -> {
+            (TableColumn.CellEditEvent<Media, String> m) -> {
                 int selectedRow = m.getTablePosition().getRow();
                 Media selectedMedia = m.getTableView().getItems().get(selectedRow);
-                //selectedMedia.setRunTime(m.getNewValue(LocalTime.parse()));
+               selectedMedia.setRunTime(m.getNewValue());
             });
     tableStreaming.setOnEditCommit(
             (TableColumn.CellEditEvent<Media, String> m) -> {
@@ -88,6 +88,31 @@ public void initialize() throws Exception {
     radioFive.setToggleGroup(ratingGroup);
 
 
+    if (Media.getAllMedia().isEmpty()) {
+        try {
+// only restore saved Objects ONCE
+            Media.restoreData();
+        } catch (Exception ex) {
+            System.out.println("NO SAVED OBJECTS WERE RESTORED: " + ex);
+        }
+
+        if (Media.getAllMedia().isEmpty()) {
+            try {
+                // only import films' data if there are NO saved Objects
+                //Media.importDataOnce();
+                System.out.println("DATA IMPORTED");
+            } catch (Exception ex) {
+                System.out.println("DATA NOT IMPORTED: " + ex);
+            }
+        } else {
+            System.out.println("SAVED OBJECTS RESTORED");
+        }
+    }
+
+    for (Media eachMedia: Media.getAllMedia()) {
+        mediaTable.getItems().add(eachMedia);
+    }
+
 }
 
 public void insertMovie() throws Exception {
@@ -98,10 +123,9 @@ public void insertMovie() throws Exception {
 
 }
 
-public void moviesWatched() throws Exception{
+public void moviesWatched() throws Exception {
     watchedMovie = mediaTable.getSelectionModel().getSelectedItem();
    if (watchedMovie != null){
-        watchedMovie.setWatched(true);
        goodLabel.setVisible(true);
        badLabel.setVisible(true);
        radioOne.setVisible(true);
@@ -138,6 +162,16 @@ public void ratingButtons() {
 
     watchedMovie.setWatched(true);
     mediaTable.getItems().remove(watchedMovie);
+
+    selectedButton.setSelected(false);
+
+    goodLabel.setVisible(false);
+    badLabel.setVisible(false);
+    radioOne.setVisible(false);
+    radioTwo.setVisible(false);
+    radioThree.setVisible(false);
+    radioFour.setVisible(false);
+    radioFive.setVisible(false);
 
 
 }
